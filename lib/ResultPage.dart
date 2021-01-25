@@ -16,107 +16,120 @@ class _ResultPageState extends State<ResultPage> {
             margin: EdgeInsets.symmetric(
               vertical: MediaQuery.of(context).size.height * 0.08,
             ),
+
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    MaterialButton(
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
+                  children: <Widget>[
+                    CircleAvatar(
+                      backgroundColor: Colors.blue,
+                      radius: 16,
                       child: Icon(
-                        Icons.arrow_back,
-                        size: 24.0,
+                        Icons.analytics_outlined,
+                        color: Colors.white,
+                        size: 18.0,
                       ),
-                      textColor: Colors.white,
-                      color: Colors.blue,
-                      padding: EdgeInsets.all(10),
-                      shape: CircleBorder(),
                     ),
-                    Text(
-                      'Results',
-                      style: TextStyle(fontSize: 22.0, color: Colors.blue[500]),
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.03,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Results',
+                          style: TextStyle(
+                              fontSize: 22.0, color: Colors.blue[500]),
+                        ),
+                      ],
                     ),
                   ],
                 ),
                 SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.06,
+                  height: MediaQuery.of(context).size.height * 0.042,
+                ),
+                Text(
+                  'Scroll for more',
+                  style: TextStyle(
+                    color: Colors.black.withOpacity(0.3),
+                    fontSize: 14.0,
+                    fontStyle: FontStyle.italic,
+                  ),
+                ),
+                SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.006,
                 ),
                 Scrollbar(
                   child: Card(
                     clipBehavior: Clip.antiAlias,
-                    elevation: 1.5,
+                    elevation: 2,
+                    shadowColor: Colors.black.withOpacity(0.4),
                     child: Container(
-                      height: 480,
+                      height: MediaQuery.of(context).size.height * 0.57,
                       child: SingleChildScrollView(
-                        child: Column(
-                          children: [
-                            SizedBox(
-                              height: MediaQuery.of(context).size.height * 0.05,
-                            ),
-                            ClipRect(
-                              child: Container(
-                                child: Align(
-                                  alignment: Alignment.center,
-                                  widthFactor: 0.9,
-                                  heightFactor: 0.9,
-                                  child: Image(
-                                    image: AssetImage('images/home.jpg'),
+                        child: Padding(
+                          padding: const EdgeInsets.all(20),
+                          child: Column(
+                            children: [
+                              ClipRect(
+                                child: Container(
+                                  child: Align(
+                                    alignment: Alignment.center,
+                                    widthFactor:
+                                        MediaQuery.of(context).size.width,
+                                    heightFactor: 0.9,
+                                    child: Image(
+                                      image: AssetImage('images/home.jpg'),
+                                    ),
                                   ),
                                 ),
                               ),
-                            ),
-                            ListTile(
-                              // leading: Icon(Icons.account_circle),
-                              title: const Text(
-                                'Name of Person',
-                                style: TextStyle(fontSize: 18.0),
+                              ListTile(
+                                contentPadding: EdgeInsets.all(0),
+                                // leading: Icon(Icons.account_circle),
+                                title: const Text(
+                                  'Name of Person',
+                                  style: TextStyle(fontSize: 18.0),
+                                ),
+                                subtitle: Text(
+                                  'Secondary Text',
+                                  style: TextStyle(
+                                      color: Colors.black.withOpacity(0.6),
+                                      fontStyle: FontStyle.italic),
+                                ),
                               ),
-                              subtitle: Text(
-                                'Secondary Text',
-                                style: TextStyle(
-                                    color: Colors.black.withOpacity(0.6),
-                                    fontStyle: FontStyle.italic),
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.all(16.0),
-                              child: Text(
+                              Text(
                                 'Greyhound divisively hello coldly wonderfully marginally far upon excluding.Greyhound divisively hello coldly wonderfully marginally far upon excluding.Greyhound divisively hello coldly wonderfully marginally far upon excluding.',
                                 style: TextStyle(
                                   color: Colors.black.withOpacity(0.6),
                                   fontSize: 12.0,
                                 ),
                               ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.all(16.0),
-                              child: Text(
-                                'Greyhound divisively hello coldly wonderfully marginally far upon excluding.Greyhound divisively hello coldly wonderfully marginally far upon excluding.Greyhound divisively hello coldly wonderfully marginally far upon excluding.',
-                                style: TextStyle(
-                                  color: Colors.black.withOpacity(0.6),
-                                  fontSize: 12.0,
-                                ),
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.all(16.0),
-                              child: Text(
-                                'Greyhound divisively hello coldly wonderfully marginally far upon excluding.Greyhound divisively hello coldly wonderfully marginally far upon excluding.Greyhound divisively hello coldly wonderfully marginally far upon excluding.',
-                                style: TextStyle(
-                                  color: Colors.black.withOpacity(0.6),
-                                  fontSize: 12.0,
-                                ),
-                              ),
-                            ),
-                            SizedBox(
-                              height: MediaQuery.of(context).size.height * 0.05,
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
                     ),
+                  ),
+                ),
+                SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.035,
+                ),
+                RaisedButton.icon(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(40)),
+                  label: Text(
+                    'Back',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  color: Colors.blue,
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  icon: Icon(
+                    Icons.arrow_back,
+                    color: Colors.white,
                   ),
                 ),
               ],

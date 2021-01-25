@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class AgendaDescription extends StatelessWidget {
+class PositionDescription extends StatelessWidget {
   final _scrollController = ScrollController();
 
   @override
@@ -18,10 +18,9 @@ class AgendaDescription extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Text(
-                      'Agenda Description',
+                      'Position Description',
                       style: TextStyle(
                           color: Colors.blue[500],
                           fontSize: 22.0,
@@ -46,11 +45,12 @@ class AgendaDescription extends StatelessWidget {
                 Expanded(
                   child: Card(
                     clipBehavior: Clip.antiAlias,
-                    elevation: 1.3,
+                    elevation: 2,
+                    shadowColor: Colors.black.withOpacity(0.4),
                     child: Scrollbar(
                       controller:
                           _scrollController, // <---- Here, the controller
-                      isAlwaysShown: true,
+                      // isAlwaysShown: true,
                       radius: Radius.circular(20),
 
                       // thickness:
@@ -67,6 +67,10 @@ class AgendaDescription extends StatelessWidget {
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
+                                  SizedBox(
+                                    height: MediaQuery.of(context).size.height *
+                                        0.03,
+                                  ),
                                   ClipRect(
                                     child: Container(
                                       child: Align(
@@ -115,52 +119,16 @@ class AgendaDescription extends StatelessWidget {
                                     ),
                                     color: Colors.blue,
                                     onPressed: () {
-                                      showDialog(
-                                          context: context,
-                                          builder: (BuildContext context) {
-                                            return AlertDialog(
-                                              scrollable: true,
-                                              title: Text('Login'),
-                                              content: Padding(
-                                                padding:
-                                                    const EdgeInsets.all(20),
-                                                child: Form(
-                                                  child: Column(
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .start,
-                                                    children: <Widget>[
-                                                      TextFormField(
-                                                        decoration:
-                                                            InputDecoration(
-                                                          labelText: 'Name',
-                                                          icon: Icon(Icons
-                                                              .account_box),
-                                                        ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ),
-                                              ),
-                                              actions: [
-                                                Padding(
-                                                  padding:
-                                                      const EdgeInsets.all(20),
-                                                  child: RaisedButton(
-                                                      child: Text("Submit"),
-                                                      onPressed: () {
-                                                        // your code
-                                                      }),
-                                                )
-                                              ],
-                                            );
-                                          });
-                                      // Navigator.pop(context);
+                                      Navigator.pop(context);
                                     },
                                     icon: Icon(
                                       Icons.how_to_vote,
                                       color: Colors.white,
                                     ),
+                                  ),
+                                  SizedBox(
+                                    height: MediaQuery.of(context).size.height *
+                                        0.05,
                                   ),
                                 ],
                               ),

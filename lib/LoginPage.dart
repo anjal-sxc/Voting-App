@@ -12,13 +12,6 @@ class SplashScreenPage extends StatelessWidget {
       image: Image.asset('images/splash.png', color: Colors.blue[600]),
       navigateAfterSeconds: new VotingAppLogin(),
       photoSize: 200.0,
-      // // title: new Text(
-      //   'GeeksForGeeks',
-      //   textScaleFactor: 2,
-      // ),
-      // loadingText: Text("Loading"),
-      // loaderColor: Colors.blue,
-      // color: Colors.blue[700],
     );
   }
 }
@@ -51,98 +44,115 @@ class _VotingAppLoginState extends State<VotingAppLogin>
   }
 
   @override
-
-// Changes the selected value on 'onChanged' click on each radio button
   Widget build(BuildContext context) {
+    final bottom = MediaQuery.of(context).viewInsets.bottom;
     return SafeArea(
-      child: Material(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            // SizedBox(
-            //   height: 200.0,
-            // ),
-            FadeTransition(
-              opacity: animation,
-              child:
-                  Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(40.0, 80.0, 40.0, 60.0),
-                  child: Image(
-                    image: AssetImage('images/prixa_image.png'),
+      child: Scaffold(
+        resizeToAvoidBottomInset: true,
+        resizeToAvoidBottomPadding: false,
+        body: SingleChildScrollView(
+          // reverse: true,
+          child: Center(
+            child: Container(
+              width: MediaQuery.of(context).size.width * 0.99,
+              // height: MediaQuery.of(context).size.height * ,
+              margin: EdgeInsets.symmetric(
+                  vertical: MediaQuery.of(context).size.height * 0.08),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  FadeTransition(
+                    opacity: animation,
+                    child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(
+                                40.0, 80.0, 40.0, 60.0),
+                            child: Image(
+                              image: AssetImage('images/prixa_image.png'),
+                            ),
+                          ),
+                        ]),
                   ),
-                ),
-              ]),
-            ),
-            Container(
-              padding: EdgeInsets.fromLTRB(60.0, 20.0, 60.0, 8.0),
-              child: TextFormField(
-                decoration:
-                    InputDecoration(labelText: 'Enter your email address'),
-              ),
-            ),
-            Container(
-              padding: EdgeInsets.fromLTRB(60.0, 20.0, 60.0, 20.0),
-              child: TextFormField(
-                decoration: InputDecoration(labelText: 'Enter your password'),
-              ),
-            ),
-
-            SizedBox(
-              height: 60.0,
-            ),
-            RaisedButton(
-              padding: EdgeInsets.fromLTRB(60.0, 20.0, 60.0, 20.0),
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(40.0)),
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => VotingHomePageApp()));
-              },
-              child: Text(
-                'Sign In',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 16.0,
-                ),
-              ),
-              color: Colors.blue[600],
-            ),
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Text(
-                      'Don\'t have an account?',
+                  Container(
+                      // color: Colors.blue,
+                      margin: EdgeInsets.symmetric(
+                        vertical: MediaQuery.of(context).size.height * 0.032,
+                        horizontal: MediaQuery.of(context).size.width * 0.15,
+                      ),
+                      child: Column(
+                        children: [
+                          TextFormField(
+                            decoration: InputDecoration(
+                                labelText: 'Enter your email address'),
+                          ),
+                          SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.018,
+                          ),
+                          TextFormField(
+                            decoration: InputDecoration(
+                                labelText: 'Enter your password'),
+                          ),
+                        ],
+                      )),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.095,
+                  ),
+                  RaisedButton(
+                    padding: EdgeInsets.fromLTRB(60.0, 20.0, 60.0, 20.0),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(40.0)),
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => VotingHomePageApp()));
+                    },
+                    child: Text(
+                      'Sign In',
                       style: TextStyle(
-                        fontSize: 14.0,
+                        color: Colors.white,
+                        fontSize: 16.0,
                       ),
                     ),
-                    InkWell(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => RegisterPage()));
-                      },
-                      child: Text(
-                        ' Sign Up',
-                        style: TextStyle(
-                          fontSize: 14.0,
-                          color: Colors.blue[400],
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                  ]),
+                    color: Colors.blue[600],
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Text(
+                            'Don\'t have an account?',
+                            style: TextStyle(
+                              fontSize: 15.0,
+                              color: Colors.black.withOpacity(0.5),
+                            ),
+                          ),
+                          InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => RegisterPage()));
+                            },
+                            child: Text(
+                              ' Sign Up',
+                              style: TextStyle(
+                                fontSize: 15.0,
+                                color: Colors.blue[400],
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        ]),
+                  ),
+                ],
+              ),
             ),
-          ],
+          ),
         ),
-        color: Colors.white,
       ),
     );
   }

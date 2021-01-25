@@ -16,7 +16,7 @@ class _VotingHomePageAppState extends State<VotingHomePageApp>
   initState() {
     super.initState();
     controller = AnimationController(
-        duration: const Duration(milliseconds: 3000), vsync: this);
+        duration: const Duration(milliseconds: 1000), vsync: this);
     animation = CurvedAnimation(parent: controller, curve: Curves.easeIn);
     controller.forward();
   }

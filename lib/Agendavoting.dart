@@ -1,5 +1,4 @@
 import 'package:votingapp/ResultPage.dart';
-
 import 'ProfilePage.dart';
 import 'package:flutter/material.dart';
 import 'AgendaDescription.dart';
@@ -20,27 +19,6 @@ class _AgendaVotingState extends State<AgendaVoting> {
     'Clean River',
     'Clean River',
   ];
-  // agendaVotingCard(String textPosition) {
-  //   return Card(
-  //     margin: EdgeInsets.fromLTRB(0.0, 20.0, 0.0, 10.0),
-  //     clipBehavior: Clip.antiAlias,
-  //     elevation: 1,
-  //     child: InkWell(
-  //       splashColor: Colors.blue,
-  //       onTap: () {},
-  //       child: ListTile(
-  //         leading: Icon(
-  //           Icons.how_to_vote_outlined,
-  //           color: Colors.blue[400],
-  //         ),
-  //         title: Text(
-  //           '$textPosition',
-  //           style: TextStyle(color: Colors.black.withOpacity(0.6)),
-  //         ),
-  //       ),
-  //     ),
-  //   );
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +29,7 @@ class _AgendaVotingState extends State<AgendaVoting> {
             width: MediaQuery.of(context).size.width * 0.78,
             // color: Colors.yellow,
             margin: EdgeInsets.symmetric(
-              vertical: MediaQuery.of(context).size.height * 0.1,
+              vertical: MediaQuery.of(context).size.height * 0.08,
             ),
             // color: Colors.red,
             child: Column(
@@ -92,7 +70,7 @@ class _AgendaVotingState extends State<AgendaVoting> {
                   ],
                 ),
                 SizedBox(
-                  height: 40.0,
+                  height: MediaQuery.of(context).size.height * 0.042,
                 ),
                 Text(
                   'Scroll for more positions',
@@ -102,45 +80,56 @@ class _AgendaVotingState extends State<AgendaVoting> {
                     fontStyle: FontStyle.italic,
                   ),
                 ),
+                SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.006,
+                ),
                 Container(
-                  height: 380,
+                  height: MediaQuery.of(context).size.height * 0.57,
+                  width: MediaQuery.of(context).size.width * 0.77,
                   child: Scrollbar(
                     // isAlwaysShown: true,
                     child: SingleChildScrollView(
                       child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: List.generate(agenda.length, (index) {
-                        return Card(
-                          margin: EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 10.0),
-                          clipBehavior: Clip.antiAlias,
-                          elevation: 1,
-                          child: InkWell(
-                            splashColor: Colors.blue,
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          AgendaDescription()));
-                            },
-                            child: ListTile(
-                              leading: Icon(
-                                Icons.how_to_vote_outlined,
-                                color: Colors.blue[400],
+                            return Card(
+                              margin: EdgeInsets.symmetric(
+                                vertical:
+                                    MediaQuery.of(context).size.height * 0.019,
+                                horizontal:
+                                    MediaQuery.of(context).size.width * 0.002,
                               ),
-                              title: Text(
-                                '${agenda[index]}',
-                                style: TextStyle(
-                                    color: Colors.black.withOpacity(0.6)),
+                              clipBehavior: Clip.antiAlias,
+                              elevation: 2,
+                              shadowColor: Colors.black.withOpacity(0.5),
+                              child: InkWell(
+                                splashColor: Colors.blue,
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              AgendaDescription()));
+                                },
+                                child: ListTile(
+                                  leading: Icon(
+                                    Icons.how_to_vote_outlined,
+                                    color: Colors.blue[400],
+                                  ),
+                                  title: Text(
+                                    '${agenda[index]}',
+                                    style: TextStyle(
+                                        color: Colors.black.withOpacity(0.6)),
+                                  ),
+                                ),
                               ),
-                            ),
-                          ),
-                        );
-                      })),
+                            );
+                          })),
                     ),
                   ),
                 ),
                 SizedBox(
-                  height: 20.0,
+                  height: MediaQuery.of(context).size.height * 0.030,
                 ),
                 Row(
                   children: [
@@ -189,30 +178,6 @@ class _AgendaVotingState extends State<AgendaVoting> {
           ),
         ),
         backgroundColor: Colors.white,
-        // bottomNavigationBar: BottomAppBar(
-        //   elevation: 20,
-        //   child: Row(
-        //       mainAxisAlignment: MainAxisAlignment.spaceAround,
-        //       children: <Widget>[
-        //         IconButton(
-        //           onPressed: () {
-        //             Navigator.pop(context);
-        //           },
-        //           icon: Icon(
-        //             Icons.home,
-        //             color: Colors.blue,
-        //             size: 30,
-        //           ),
-        //         ),
-        //         IconButton(
-        //           icon: Icon(
-        //             Icons.person,
-        //             color: Colors.blue,
-        //             size: 30,
-        //           ),
-        //         ),
-        //       ]),
-        // ),
       ),
     );
   }
