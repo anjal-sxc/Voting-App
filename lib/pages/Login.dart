@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:votingapp/Homepage.dart';
-import 'RegisterPage.dart';
+import 'package:votingapp/pages/Homepage.dart';
+import 'Register.dart';
 import 'package:splashscreen/splashscreen.dart';
 import 'package:flutter/animation.dart';
 
-class SplashScreenPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return SplashScreen(
-      seconds: 3,
-      image: Image.asset('images/splash.png', color: Colors.blue[600]),
-      navigateAfterSeconds: new VotingAppLogin(),
-      photoSize: 200.0,
-    );
-  }
-}
+// class SplashScreenPage extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return SplashScreen(
+//       seconds: 3,
+//       image: Image.asset('images/splash.png', color: Colors.blue[600]),
+//       navigateAfterSeconds: new VotingAppLogin(),
+//       photoSize: 200.0,
+//     );
+//   }
+// }
 
 class VotingAppLogin extends StatefulWidget {
   @override
@@ -31,31 +31,19 @@ class _VotingAppLoginState extends State<VotingAppLogin>
     controller = AnimationController(
         duration: const Duration(milliseconds: 3000), vsync: this);
     animation = CurvedAnimation(parent: controller, curve: Curves.easeIn);
-
-    /*animation.addStatusListener((status) {
-    if (status == AnimationStatus.completed) {
-      controller.reverse();
-    } else if (status == AnimationStatus.dismissed) {
-      controller.forward();
-    }
-  });*/
-//this will start the animation
     controller.forward();
   }
 
   @override
   Widget build(BuildContext context) {
-    final bottom = MediaQuery.of(context).viewInsets.bottom;
     return SafeArea(
       child: Scaffold(
         resizeToAvoidBottomInset: true,
         resizeToAvoidBottomPadding: false,
         body: SingleChildScrollView(
-          // reverse: true,
           child: Center(
             child: Container(
               width: MediaQuery.of(context).size.width * 0.99,
-              // height: MediaQuery.of(context).size.height * ,
               margin: EdgeInsets.symmetric(
                   vertical: MediaQuery.of(context).size.height * 0.08),
               child: Column(
@@ -76,7 +64,6 @@ class _VotingAppLoginState extends State<VotingAppLogin>
                         ]),
                   ),
                   Container(
-                      // color: Colors.blue,
                       margin: EdgeInsets.symmetric(
                         vertical: MediaQuery.of(context).size.height * 0.032,
                         horizontal: MediaQuery.of(context).size.width * 0.15,
@@ -118,36 +105,36 @@ class _VotingAppLoginState extends State<VotingAppLogin>
                     ),
                     color: Colors.blue[600],
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          Text(
-                            'Don\'t have an account?',
+                  Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.07,
+                        ),
+                        Text(
+                          'Don\'t have an account?',
+                          style: TextStyle(
+                            fontSize: 15.0,
+                            color: Colors.black.withOpacity(0.5),
+                          ),
+                        ),
+                        InkWell(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => RegisterPage()));
+                          },
+                          child: Text(
+                            ' Sign Up',
                             style: TextStyle(
                               fontSize: 15.0,
-                              color: Colors.black.withOpacity(0.5),
+                              color: Colors.blue[400],
+                              fontWeight: FontWeight.bold,
                             ),
                           ),
-                          InkWell(
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => RegisterPage()));
-                            },
-                            child: Text(
-                              ' Sign Up',
-                              style: TextStyle(
-                                fontSize: 15.0,
-                                color: Colors.blue[400],
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
-                        ]),
-                  ),
+                        ),
+                      ]),
                 ],
               ),
             ),

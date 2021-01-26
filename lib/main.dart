@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'LoginPage.dart';
+import 'pages/Login.dart';
 
 void main() {
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
     home: SafeArea(
       child: Scaffold(
-        body: SplashScreenPage(),
+        body: VotingAppLogin(),
       ),
     ),
   ));
